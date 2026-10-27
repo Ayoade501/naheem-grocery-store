@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in | Organic</title>
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+
+  <main class="auth-card">
+    <div class="brand">ORGANIC</div>
+    <h1>Welcome back</h1>
+    <p class="subtitle">Sign in to continue to the store.</p>
+
+    <!-- shows an error for 4 seconds (set by signIn() in js/signin.js) -->
+    <p id="errorMsg" class="msg msg-error" role="alert" style="display: none;"></p>
+
+    <form onsubmit="signIn(); return false;" novalidate>
+      <div class="field">
+        <label for="emailAddress">Email address</label>
+        <input id="emailAddress" type="email" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password">
+      </div>
+
+      <button id="signInBtn" type="submit" class="btn btn-block">Sign in</button>
+    </form>
+
+    <!-- the success message appears here -->
+    <div id="display" role="status" aria-live="polite"></div>
+
+    <p class="switch">New here? <a href="signup.html">Create an account</a></p>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/signin.js"></script>
+</body>
+</html>

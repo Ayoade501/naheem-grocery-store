@@ -1,0 +1,179 @@
+/* auth.css: styles for signup.html, signin.html, account.html and admin.html.
+   Plain CSS only. No Bootstrap, no libraries.
+   To re-colour everything, change the variables in :root. */
+
+:root {
+  --green: #4f9a3a;
+  --green-dark: #3d7a2d;
+  --green-soft: #eef6e9;
+  --ink: #26301f;
+  --muted: #6b7561;
+  --line: #dfe6d9;
+  --page: #f6f8f3;
+  --white: #ffffff;
+  --red: #b3261e;
+  --red-soft: #fdecea;
+  --amber: #8a5a00;
+  --amber-soft: #fff4d6;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--page);
+}
+
+/* Pages that need a login stay invisible until the script confirms access. */
+body.guarded { visibility: hidden; }
+
+a { color: var(--green-dark); }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 8px; }
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.2rem; }
+p { margin: 0 0 12px; }
+
+/* ---------- centered card (sign up / sign in) ---------- */
+body.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: linear-gradient(160deg, #eef6e9 0%, #f9fbf6 60%, #ffffff 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: 0 10px 30px rgba(60, 90, 40, 0.08);
+}
+
+.brand { color: var(--green-dark); font-weight: 700; letter-spacing: 0.04em; margin-bottom: 12px; }
+.subtitle { color: var(--muted); margin-bottom: 20px; }
+.switch { margin: 18px 0 0; text-align: center; color: var(--muted); }
+
+/* ---------- forms ---------- */
+.field { margin-bottom: 14px; }
+.field label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.92rem; }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 11px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid #c8d2c0;
+  border-radius: 8px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--green);
+  outline-offset: 1px;
+  border-color: var(--green);
+}
+
+input.invalid, select.invalid { border-color: var(--red); }
+
+.error { color: var(--red); font-size: 0.85rem; margin: 4px 0 0; min-height: 1.1em; }
+.hint { color: var(--muted); font-size: 0.85rem; margin: 4px 0 0; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 11px 18px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--green);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+.btn:hover { background: var(--green-dark); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-block { width: 100%; }
+.btn-secondary { background: var(--white); color: var(--green-dark); border: 1px solid var(--green); }
+.btn-secondary:hover { background: var(--green-soft); }
+.btn-danger { background: var(--red); }
+.btn-danger:hover { background: #8f1e18; }
+.btn-small { padding: 6px 12px; font-size: 0.85rem; }
+
+/* ---------- message boxes ---------- */
+.msg { padding: 10px 12px; border-radius: 8px; margin: 14px 0 0; font-size: 0.95rem; }
+.msg-success { background: var(--green-soft); color: var(--green-dark); border: 1px solid #c9e2bd; }
+.msg-error { background: var(--red-soft); color: var(--red); border: 1px solid #f3c2bd; }
+.msg-warning { background: var(--amber-soft); color: var(--amber); border: 1px solid #f1d98f; }
+
+/* ---------- top bar and layout (admin / account) ---------- */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .brand { margin: 0; }
+.topbar-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.who { color: var(--muted); font-size: 0.92rem; }
+
+.page { max-width: 960px; margin: 0 auto; padding: 24px 16px 48px; }
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+.form-grid .full { grid-column: 1 / -1; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  text-transform: uppercase;
+}
+.badge-admin { background: var(--amber-soft); color: var(--amber); }
+
+dl.details { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0 0 8px; }
+dl.details dt { color: var(--muted); }
+dl.details dd { margin: 0; font-weight: 600; word-break: break-word; }
+
+/* ---------- tables ---------- */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { color: var(--muted); font-weight: 600; font-size: 0.85rem; }
+.empty { color: var(--muted); padding: 8px 0; }
+
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .auth-card { padding: 22px 16px; }
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin panel | Organic</title>
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<!-- "guarded" hides the page until admin.js confirms the visitor is an admin -->
+<body class="guarded">
+
+  <header class="topbar">
+    <div class="brand">ORGANIC &middot; ADMIN</div>
+    <div class="topbar-actions">
+      <span class="who">Signed in as <strong id="admin-name"></strong> <span class="badge badge-admin">admin</span></span>
+      <a class="btn btn-secondary btn-small" href="index.html">View store</a>
+      <a class="btn btn-secondary btn-small" href="account.html">My account</a>
+      <button type="button" class="btn btn-small" id="logout-btn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <section class="panel">
+      <h2>Add a product</h2>
+      <p class="hint">New products appear in the store under "New in store".</p>
+
+      <form id="product-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="p-name">Product name</label>
+            <input id="p-name" type="text" maxlength="60" aria-describedby="p-name-error">
+            <p class="error" id="p-name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="p-price">Price (USD)</label>
+            <input id="p-price" type="text" inputmode="decimal" placeholder="e.g. 12.50" aria-describedby="p-price-error">
+            <p class="error" id="p-price-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="p-category">Category</label>
+            <select id="p-category" aria-describedby="p-category-error"></select>
+            <p class="error" id="p-category-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="p-image">Image link (optional)</label>
+            <input id="p-image" type="text" placeholder="https://..." aria-describedby="p-image-error">
+            <p class="error" id="p-image-error"></p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Add product</button>
+        <p id="product-message" class="msg" role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Products you added</h2>
+      <p id="products-empty" class="empty">No products added yet.</p>
+      <div class="table-wrap" id="products-wrap" hidden>
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Category</th><th>Price</th><th>Added</th><th></th></tr>
+          </thead>
+          <tbody id="product-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Accounts</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th></tr>
+          </thead>
+          <tbody id="user-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

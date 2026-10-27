@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My account | Organic</title>
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<!-- "guarded" hides the page until account.js confirms someone is signed in -->
+<body class="guarded">
+
+  <header class="topbar">
+    <div class="brand">ORGANIC</div>
+    <div class="topbar-actions">
+      <a class="btn btn-secondary btn-small" href="index.html">Back to store</a>
+      <a class="btn btn-secondary btn-small" id="admin-link" href="admin.html" hidden>Admin panel</a>
+      <button type="button" class="btn btn-small" id="logout-btn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <section class="panel">
+      <h1>My account</h1>
+      <dl class="details">
+        <dt>Name</dt><dd id="acc-name"></dd>
+        <dt>Email</dt><dd id="acc-email"></dd>
+        <dt>Role</dt><dd><span class="badge" id="acc-role"></span></dd>
+        <dt>Member since</dt><dd id="acc-since"></dd>
+      </dl>
+      <p class="hint" id="role-note"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Change password</h2>
+      <form id="password-form" novalidate>
+        <div class="field">
+          <label for="current">Current password</label>
+          <input id="current" type="password" autocomplete="current-password" aria-describedby="current-error">
+          <p class="error" id="current-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="next">New password</label>
+          <input id="next" type="password" autocomplete="new-password" aria-describedby="next-error">
+          <p class="hint">At least 8 characters, with a letter and a number.</p>
+          <p class="error" id="next-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="confirm">Confirm new password</label>
+          <input id="confirm" type="password" autocomplete="new-password" aria-describedby="confirm-error">
+          <p class="error" id="confirm-error"></p>
+        </div>
+
+        <button type="submit" class="btn">Update password</button>
+        <p id="password-message" class="msg" role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>
